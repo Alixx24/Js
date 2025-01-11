@@ -14,13 +14,12 @@
 <body>
 
     <button id="btnToggleSidebar">sidebar</button>
-    
+
 
     <div id="close">
         <b id="closeBtn">X</b>
         <p>heee</p>
     </div>
-
     <div class="input-group mb-3">
         <input type="text" class="form-control" id="replace" placeholder="Recipient's username"
             aria-label="Recipient's username" aria-describedby="basic-addon2">
@@ -31,31 +30,63 @@
 
     <div id="upperCaseText"></div>
 
-    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
+        $(document).ready(function () {
+            // زمانی که کاربر روی ورودی کلیک می‌کند، پس‌زمینه و رنگ متن تغییر می‌کند
+            $("#replace").click(function () {
+                $(this).css({
+                    "background-color": "green", // تغییر رنگ پس‌زمینه
+                    "color": "white" // تغییر رنگ متن
+                });
+            });
 
-$(document).ready(function() {
-    // زمانی که کاربر روی ورودی کلیک می‌کند، پس‌زمینه و رنگ متن تغییر می‌کند
-    $("#replace").click(function() {
-        $(this).css({
-            "background-color": "green", // تغییر رنگ پس‌زمینه
-            "color": "white" // تغییر رنگ متن
+
+            function convertToEnglishNumbers(input) {
+                const persianNumbers = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+                const englishNumbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+
+                let result = input;
+                for (let i = 0; i < persianNumbers.length; i++) {
+                    result = result.replace(new RegExp(persianNumbers[i], 'g'), englishNumbers[i]);
+                }
+                return result;
+            }
+
+            // زمانی که ورودی تغییر می‌کند
+            $("#replace").on("input", function () {
+                var inputVal = $(this).val();
+
+                if (inputVal === "هفت") {
+                    $("#upperCaseText").text("harfe fard");
+                    return;
+                }
+                if (inputVal === "هشت") {
+                    $("#upperCaseText").text("حرفه هشت");
+                    return;
+                }
+
+                // تبدیل اعداد فارسی به انگلیسی
+                var inputValEnglish = convertToEnglishNumbers(inputVal);
+
+                // تبدیل به عدد
+                var num = parseInt(inputValEnglish);
+
+                // بررسی اینکه ورودی عدد است
+                if (!isNaN(num)) {
+                    if (num % 2 === 0) {
+                        $("#upperCaseText").text('عدد زوج است');
+                    }
+
+                    else {
+                        $("#upperCaseText").text('عدد فرد است');
+                    }
+                } else {
+                    $("#upperCaseText").text('');
+                }
+            });
         });
-    });
-
-    // فرمت کردن عدد با استفاده از کاما برای هر سه رقم
-    
-});
-
-
-$("#replace").on("input", function() {
-    var inputVal = $(this).val();
-
-    var updateVal = inputVal.replace(/a/g, 'A');
-    $(this).val(updateVal);
-});
-
-
+    </script>
 
 
 
