@@ -13,60 +13,44 @@
 
 <body>
 
-
-
-    <div id="close">
-        <b id="closeBtn">X</b>
-        <p>heee</p>
+    <div id="gallery">
+        <img id="galleryone" src="img/android.webp" alt="" width="55px" height="55px">
+        <img id="gallerytwo" src="img/app-store.webp" alt="" width="55px" height="55px">
+        <img id="gallerythree" src="img/star.png" alt="" width="55px" height="55px">
     </div>
-<p>1</p>
-<p>2</p>
-<p>1000</p>
-<p>3000</p>
-    <div class="input-group mb-3">
-        <input type="text" class="form-control" id="usernameInput" placeholder="Recipient's username"
-            aria-label="Recipient's username" aria-describedby="basic-addon2">
-        <div class="input-group-append">
-            <span class="input-group-text" id="basic-addon2">@example.com</span>
-        </div>
-    </div>
-
- 
     <div id="upperCaseText"></div>
 
     </div>
     <script>
 
-        $("#usernameInput").on("input", function () {
-            var uppercaseText = $(this).val().toUpperCase();
-            $("#upperCaseText").text(uppercaseText);
-        })
-
-
-
-
-
         $(document).ready(function () {
-            $("#closeBtn").click(function () {
-                $("#close").hide();
+            $("#galleryone").click(function () {
+                var imgOne = $("#galleryone");
+
+
+                imgOne.css({
+                    "width": "90px",
+                    "height": "150px",
+                });
+
+
+
             })
-        })
 
-
-        $(document).ready(function () {
-         
-            $("#btnToggleSidebar").click(function () {
-                var sidebar = $("#sidebar");
-
-                
-                if (sidebar.css("display") === "none") {
-                    sidebar.stop(true, true).slideDown(500);  
-                } else {
-                    sidebar.stop(true, true).slideUp(500); 
+            $(document).click(function (e) {
+                // اگر کلیک درون گالری نبود، سایز همه تصاویر به حالت اولیه برمی‌گردد
+                if (!$(e.target).closest('#gallery').length) {
+                    $("#gallery img").css({
+                        "width": "55px",
+                        "height": "55px"
+                    });
                 }
             });
-        });
 
+
+         
+
+        });
 
 
 
