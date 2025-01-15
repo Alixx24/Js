@@ -79,7 +79,7 @@
         </div>
     </div>
 
-    <!-- قسمت برای نمایش متن بزرگ -->
+ 
     <div id="upperCaseText"></div>
 
     </div>
@@ -102,11 +102,11 @@
 
 
         $(document).ready(function () {
-            // تغییر وضعیت نمایش و مخفی کردن سایدبار با یک دکمه
+         
             $("#btnToggleSidebar").click(function () {
                 var sidebar = $("#sidebar");
 
-                // اگر سایدبار مخفی است، آن را نمایش می‌دهیم
+                
                 if (sidebar.css("display") === "none") {
                     sidebar.stop(true, true).slideDown(500);  // نمایش sidebar با انیمیشن
                 } else {
