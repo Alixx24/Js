@@ -27,18 +27,14 @@
             $("#galleryone").click(function () {
                 var imgOne = $("#galleryone");
 
-
                 imgOne.css({
                     "width": "90px",
                     "height": "150px",
                 });
 
-
-
             })
 
             $(document).click(function (e) {
-                // اگر کلیک درون گالری نبود، سایز همه تصاویر به حالت اولیه برمی‌گردد
                 if (!$(e.target).closest('#gallery').length) {
                     $("#gallery img").css({
                         "width": "55px",
@@ -46,10 +42,6 @@
                     });
                 }
             });
-
-
-         
-            
 
         });
 
